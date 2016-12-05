@@ -20,33 +20,33 @@ namespace TrabalhandoComClasses
         private void button1_Click(object sender, EventArgs e)
         {
             Conta conta = new Conta();
-            conta.titular = new Cliente();
-            conta.saldo = 300.00;
+            conta.Titular = new Cliente();
+            conta.deposita(300.00);
+            conta.Titular.nome = "Felipe";
+            conta.Titular.idade = 19;
             conta.saca(250.0);
             conta.deposita(150.0);
-            conta.titular.nome = "Felipe";
-            conta.titular.idade = 17;
-            conta.numero = 1;
-            conta.titular.cpf = "asdsda12312";
-            conta.agencia = 1111;
+            conta.Numero = 1;
+            conta.Titular.cpf = "asdsda12312";
+            conta.Agencia = 1111;
 
             Conta conta2 = new Conta();
-            conta2.titular = new Cliente();
-            conta2.saldo = 100.00;
+            conta2.Titular = new Cliente();
+            conta2.deposita(100.00);
             conta2.saca(50.0);
             conta2.deposita(150.0);
-            conta2.titular.nome = "Pedro";
-            conta2.numero = 1;
-            conta2.titular.cpf = "asdsda12312";
-            conta2.agencia = 1111;
+            conta2.Titular.nome = "Pedro";
+            conta2.Numero = 1;
+            conta2.Titular.cpf = "asdsda12312";
+            conta2.Agencia = 1111;
             conta2.transfere(100, conta);
 
-            MessageBox.Show("A conta pertence a: " + conta.titular.nome 
-                            +"\n Número: " + conta.numero 
-                            +"\n Agência " + conta.agencia
-                            +"\n CPF: " + conta.titular.cpf
-                            +"\n é de maior? " + conta.titular.ehDeMaior()
-                            + "\n Saldo: " + conta.saldo);
+            MessageBox.Show("A conta pertence a: " + conta.Titular.nome 
+                            +"\n Número: " + conta.Numero 
+                            +"\n Agência " + conta.Agencia
+                            +"\n CPF: " + conta.Titular.cpf
+                            +"\n é de maior? " + conta.Titular.ehDeMaior()
+                            + "\n Saldo: " + conta.Saldo);
         }
     }
 }

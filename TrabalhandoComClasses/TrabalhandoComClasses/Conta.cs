@@ -2,18 +2,18 @@
 {
     internal class Conta
     {
-        public Cliente titular = new Cliente();
-        public double saldo;
-        public int numero;
-        public int agencia;
+        public Cliente Titular { get; set; } 
+        public double Saldo { get; private set; }
+        public int Numero { get; set; }
+        public int Agencia { get; set; }
 
         public void saca(double valorASacar)
         {
-            if (valorASacar > 0 && valorASacar <= this.saldo)
+            if (valorASacar > 0 && valorASacar <= this.Saldo)
             {
-                if (this.titular.ehDeMaior())
+                if (this.Titular.ehDeMaior())
                 {
-                    this.saldo -= valorASacar;
+                    this.Saldo -= valorASacar;
                 }
                 else if (valorASacar > 200)
                 {
@@ -21,7 +21,7 @@
                 }
                 else
                 {
-                    this.saldo -= valorASacar;
+                    this.Saldo -= valorASacar;
                 }
                 
             }
@@ -31,7 +31,7 @@
         {
             if (valorADepositar > 0)
             {
-                this.saldo += valorADepositar;
+                this.Saldo += valorADepositar;
             }
         }
            
