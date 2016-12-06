@@ -11,8 +11,8 @@ D:\Documents\Alura\C#II\codigos\TrabalhandoComClasses\TrabalhandoComClasses\bin\
 D:\Documents\Alura\C#II\codigos\TrabalhandoComClasses\TrabalhandoComClasses\obj\Debug\TrabalhandoComClasses.exe
 D:\Documents\Alura\C#II\codigos\TrabalhandoComClasses\TrabalhandoComClasses\obj\Debug\TrabalhandoComClasses.pdb
 D:\Documents\Alura\C#II\codigos\TrabalhandoComClasses\TrabalhandoComClasses\obj\Debug\TrabalhandoComClasses.csprojResolveAssemblyReference.cache
-D:\Documents\Alura\C#II\codigos\TrabalhandoComClasses\TrabalhandoComClasses\obj\Debug\TrabalhandoComClasses.Form1.resources
 D:\Documents\Alura\C#II\codigos\TrabalhandoComClasses\TrabalhandoComClasses\obj\Debug\TrabalhandoComClasses.Properties.Resources.resources
 D:\Documents\Alura\C#II\codigos\TrabalhandoComClasses\TrabalhandoComClasses\obj\Debug\TrabalhandoComClasses.csproj.GenerateResource.Cache
 D:\Documents\Alura\C#II\codigos\TrabalhandoComClasses\TrabalhandoComClasses\bin\Debug\TrabalhandoComClasses.exe
 D:\Documents\Alura\C#II\codigos\TrabalhandoComClasses\TrabalhandoComClasses\bin\Debug\TrabalhandoComClasses.pdb
+D:\Documents\Alura\C#II\codigos\TrabalhandoComClasses\TrabalhandoComClasses\obj\Debug\WindowsFormsApplication1.Form1.resources
