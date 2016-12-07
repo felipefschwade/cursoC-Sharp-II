@@ -23,7 +23,11 @@
                 {
                     this.Saldo -= valorASacar;
                 }
-                
+
+            }
+            else
+            {
+                throw new System.Exception("Você não possui saldo para este saque");
             }
         }
 
