@@ -7,7 +7,7 @@
         public int Numero { get; set; }
         public int Agencia { get; set; }
 
-        public void saca(double valorASacar)
+        public virtual void saca(double valorASacar)
         {
             if (valorASacar > 0 && valorASacar <= this.Saldo)
             {

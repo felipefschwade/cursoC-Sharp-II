@@ -13,7 +13,7 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
-        Conta conta = new Conta();
+        Conta conta = new ContaPouopanca();
         public Form1()
         {
             InitializeComponent();
