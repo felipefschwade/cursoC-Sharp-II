@@ -13,7 +13,7 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
-        Conta conta = new ContaPouopanca();
+        Conta conta = new ContaCorrente();
         public Form1()
         {
             InitializeComponent();
@@ -62,6 +62,13 @@ namespace WindowsFormsApplication1
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            TotalizadorDeContas totalizador =  new TotalizadorDeContas();
+            totalizador.adiciona(conta);
+            MessageBox.Show(Convert.ToString(totalizador.saldoTotal));
         }
     }
 }
