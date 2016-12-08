@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrabalhandoComClasses;
 
@@ -49,7 +42,11 @@ namespace WindowsFormsApplication1
         private void button1_Click(object sender, EventArgs e)
         {
             double valor = Convert.ToDouble(textoValorParaDeposito.Text);
-            conta.deposita(valor);
+
+            int index = comboTitulares.SelectedIndex;
+
+            banco.Contas[index].deposita(valor);
+
             MessageBox.Show("Saldo Anterior: " + (conta.Saldo - valor) + "\n"
                             + "Saldo Atual: " + conta.Saldo);
             textoSaldo.Text = Convert.ToString(conta.Saldo);
@@ -61,11 +58,13 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            int index = comboTitulares.SelectedIndex;
+
             double valor = Convert.ToDouble(textoValorSaque.Text);
-            conta.saca(valor);
-            MessageBox.Show("Saldo Anterior: " + (conta.Saldo + valor) + "\n"
-                            + "Saldo Atual: " + conta.Saldo);
-            textoSaldo.Text = Convert.ToString(conta.Saldo);
+            banco.Contas[index].saca(valor);
+            MessageBox.Show("Saldo Anterior: " + (banco.Contas[index].Saldo + valor) + "\n"
+                            + "Saldo Atual: " + banco.Contas[index].Saldo);
+            textoSaldo.Text = Convert.ToString(banco.Contas[index].Saldo);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -81,20 +80,21 @@ namespace WindowsFormsApplication1
         private void button3_Click(object sender, EventArgs e)
         {
             TotalizadorDeContas totalizador =  new TotalizadorDeContas();
-            totalizador.adiciona(conta);
+            foreach (Conta c in banco.Contas)
+            {
+                if (c != null)
+                {
+                    totalizador.adiciona(c);
+                }
+            }
             MessageBox.Show(Convert.ToString(totalizador.saldoTotal));
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            foreach (Conta c in banco.Contas)
-            {
-                if (c != null)
-                {
-                    MessageBox.Show("Conta Número: " + c.Numero + "\n"
-                                + "Saldo: " + c.Saldo);
-                }
-            }
+            int index = comboTitulares.SelectedIndex;
+            MessageBox.Show("Conta Número: " + banco.Contas[index].Numero + "\n"
+                                + "Saldo: " + banco.Contas[index].Numero);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
