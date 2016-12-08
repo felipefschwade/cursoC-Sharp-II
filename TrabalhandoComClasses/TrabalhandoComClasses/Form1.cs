@@ -50,6 +50,7 @@ namespace WindowsFormsApplication1
             MessageBox.Show("Saldo Anterior: " + (conta.Saldo - valor) + "\n"
                             + "Saldo Atual: " + conta.Saldo);
             textoSaldo.Text = Convert.ToString(conta.Saldo);
+            textoValorParaDeposito.Text = "";
         }
 
         private void textoSaldo_TextChanged(object sender, EventArgs e)
@@ -65,6 +66,7 @@ namespace WindowsFormsApplication1
             MessageBox.Show("Saldo Anterior: " + (banco.Contas[index].Saldo + valor) + "\n"
                             + "Saldo Atual: " + banco.Contas[index].Saldo);
             textoSaldo.Text = Convert.ToString(banco.Contas[index].Saldo);
+            textoValorSaque.Text = "";
         }
 
         private void label1_Click(object sender, EventArgs e)
