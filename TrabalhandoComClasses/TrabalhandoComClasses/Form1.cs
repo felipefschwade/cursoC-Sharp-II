@@ -43,9 +43,9 @@ namespace WindowsFormsApplication1
         {
             double valor = Convert.ToDouble(textoValorParaDeposito.Text);
 
-            int index = comboTitulares.SelectedIndex;
+            Conta conta = buscaConta();
 
-            banco.Contas[index].deposita(valor);
+            conta.deposita(valor);
 
             MessageBox.Show("Saldo Anterior: " + (conta.Saldo - valor) + "\n"
                             + "Saldo Atual: " + conta.Saldo);
@@ -59,13 +59,13 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            int index = comboTitulares.SelectedIndex;
+            Conta conta = buscaConta();
 
             double valor = Convert.ToDouble(textoValorSaque.Text);
-            banco.Contas[index].saca(valor);
-            MessageBox.Show("Saldo Anterior: " + (banco.Contas[index].Saldo + valor) + "\n"
-                            + "Saldo Atual: " + banco.Contas[index].Saldo);
-            textoSaldo.Text = Convert.ToString(banco.Contas[index].Saldo);
+            conta.saca(valor);
+            MessageBox.Show("Saldo Anterior: " + (conta.Saldo + valor) + "\n"
+                            + "Saldo Atual: " + conta.Saldo);
+            textoSaldo.Text = Convert.ToString(conta.Saldo);
             textoValorSaque.Text = "";
         }
 
@@ -94,18 +94,24 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            int index = comboTitulares.SelectedIndex;
-            MessageBox.Show("Conta Número: " + banco.Contas[index].Numero + "\n"
-                                + "Saldo: " + banco.Contas[index].Numero);
+            Conta conta = buscaConta();
+            MessageBox.Show("Conta Número: " + conta.Numero + "\n"
+                                + "Saldo: " + conta.Numero);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int index = comboTitulares.SelectedIndex;
+            Conta conta = buscaConta();
 
-            textoNumero.Text = Convert.ToString(banco.Contas[index].Numero);
-            textoSaldo.Text = Convert.ToString(banco.Contas[index].Saldo);
-            textoTitular.Text = banco.Contas[index].Titular.Nome;
+            textoNumero.Text = Convert.ToString(conta.Numero);
+            textoSaldo.Text = Convert.ToString(conta.Saldo);
+            textoTitular.Text = conta.Titular.Nome;
+        }
+
+        private Conta buscaConta()
+        {
+            int index = comboTitulares.SelectedIndex;
+            return this.banco.Contas[index];
         }
     }
 }
