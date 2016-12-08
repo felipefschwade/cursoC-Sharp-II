@@ -42,6 +42,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.comboTitulares = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textoTitular
@@ -167,11 +169,31 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // comboTitulares
+            // 
+            this.comboTitulares.FormattingEnabled = true;
+            this.comboTitulares.Location = new System.Drawing.Point(151, 37);
+            this.comboTitulares.Name = "comboTitulares";
+            this.comboTitulares.Size = new System.Drawing.Size(121, 21);
+            this.comboTitulares.TabIndex = 14;
+            this.comboTitulares.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(151, 18);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(88, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Selecionar Conta";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.comboTitulares);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label5);
@@ -210,6 +232,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ComboBox comboTitulares;
+        private System.Windows.Forms.Label label6;
     }
 }
 

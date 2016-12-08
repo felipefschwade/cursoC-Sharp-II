@@ -29,10 +29,21 @@ namespace WindowsFormsApplication1
             conta.deposita(250.0);
             conta.Numero = 1;
 
-            textoNumero.Text = Convert.ToString(conta.Numero);
-            textoSaldo.Text = Convert.ToString(conta.Saldo);
-            textoTitular.Text = conta.Titular.Nome;
+            cp.Titular = new Cliente("Cezar");
+            cp.Titular.idade = 19;
+            cp.deposita(250.0);
+            cp.Numero = 2;
 
+            banco.adicionaConta(conta);
+            banco.adicionaConta(cp);
+
+            foreach (Conta c in banco.Contas)
+            {
+                if (c != null)
+                {
+                    comboTitulares.Items.Add(c.Titular.Nome);
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -76,9 +87,6 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            cp.deposita(250.00);
-            banco.adicionaConta(conta);
-            banco.adicionaConta(cp);
             foreach (Conta c in banco.Contas)
             {
                 if (c != null)
@@ -87,6 +95,15 @@ namespace WindowsFormsApplication1
                                 + "Saldo: " + c.Saldo);
                 }
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = comboTitulares.SelectedIndex;
+
+            textoNumero.Text = Convert.ToString(banco.Contas[index].Numero);
+            textoSaldo.Text = Convert.ToString(banco.Contas[index].Saldo);
+            textoTitular.Text = banco.Contas[index].Titular.Nome;
         }
     }
 }
