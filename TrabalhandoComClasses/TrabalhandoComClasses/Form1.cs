@@ -13,14 +13,17 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
+        Banco banco = new Banco();
         Conta conta = new ContaCorrente();
+        Conta cp = new ContaPouopanca();
+        
         public Form1()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
+        { 
             conta.Titular = new Cliente("Victor");
             conta.Titular.idade = 19;
             conta.deposita(250.0);
@@ -69,6 +72,21 @@ namespace WindowsFormsApplication1
             TotalizadorDeContas totalizador =  new TotalizadorDeContas();
             totalizador.adiciona(conta);
             MessageBox.Show(Convert.ToString(totalizador.saldoTotal));
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            cp.deposita(250.00);
+            banco.adicionaConta(conta);
+            banco.adicionaConta(cp);
+            foreach (Conta c in banco.Contas)
+            {
+                if (c != null)
+                {
+                    MessageBox.Show("Conta Número: " + c.Numero + "\n"
+                                + "Saldo: " + c.Saldo);
+                }
+            }
         }
     }
 }
