@@ -21,7 +21,7 @@ namespace WindowsFormsApplication1
             conta.Titular.idade = 19;
             conta.deposita(250.0);
             conta.Numero = 1;
-
+            conta.transfere(100, cp);
             cp.Titular = new Cliente("Cezar");
             cp.Titular.idade = 19;
             cp.deposita(250.0);
@@ -101,17 +101,59 @@ namespace WindowsFormsApplication1
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            comboDestinatario.Items.Clear();
+
             Conta conta = buscaConta();
 
             textoNumero.Text = Convert.ToString(conta.Numero);
             textoSaldo.Text = Convert.ToString(conta.Saldo);
             textoTitular.Text = conta.Titular.Nome;
+
+            foreach (Conta c in banco.Contas)
+            {
+                if (c != null)
+                {
+                    comboDestinatario.Items.Add(c.Titular.Nome);
+                }
+            }
+            comboDestinatario.SelectedIndex = 0;
+
         }
 
         private Conta buscaConta()
         {
             int index = comboTitulares.SelectedIndex;
             return this.banco.Contas[index];
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Conta conta = buscaConta();
+            int index = comboDestinatario.SelectedIndex;
+            Conta destino = banco.Contas[index];
+            if (destino != null && textoValorTransferencia.Text != "")
+            {
+                double valor = Convert.ToDouble(textoValorTransferencia.Text);
+                try
+                {
+                    conta.transfere(valor, destino);
+                    MessageBox.Show("Transferência realizada com sucesso!");
+                    textoValorTransferencia.Text = "";
+                    MessageBox.Show("Saldo atual: " + Convert.ToString(conta.Saldo));
+                }
+                catch (InvalidOperationException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("Você deve selecionar uma conta e um valor válido para realizar a transferência");
+            }
+            string saldoAtual = Convert.ToString(conta.Saldo);
+            textoSaldo.Text = saldoAtual;
+            textoSaldo.Update();
         }
     }
 }

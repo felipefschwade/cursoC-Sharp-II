@@ -1,4 +1,6 @@
-﻿namespace TrabalhandoComClasses
+﻿using System;
+
+namespace TrabalhandoComClasses
 {
     internal class Conta
     {
@@ -11,19 +13,7 @@
         {
             if (valorASacar > 0 && valorASacar <= this.Saldo)
             {
-                if (this.Titular.ehDeMaior())
-                {
-                    this.Saldo -= valorASacar;
-                }
-                else if (valorASacar > 200)
-                {
-                    throw new System.Exception("O máximo que um menor de idade pode sacar é 200 R$");
-                }
-                else
-                {
-                    this.Saldo -= valorASacar;
-                }
-
+                this.Saldo -= valorASacar;
             }
             else
             {
@@ -41,8 +31,14 @@
            
         public void transfere(double valorATransferir, Conta destino)
         {
+            if (destino.Equals(this))
+            {
+                throw new InvalidOperationException("Você não pode realizar uma transferência para você mesmo");
+            }
             this.saca(valorATransferir);
+            Console.WriteLine(this.Saldo);
             destino.deposita(valorATransferir);
+            Console.WriteLine(this.Saldo);
         }
     }
 }
