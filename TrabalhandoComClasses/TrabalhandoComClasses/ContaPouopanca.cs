@@ -10,7 +10,14 @@ namespace TrabalhandoComClasses
     {
         public override void saca(double valorASacar)
         {
-            base.saca(valorASacar + 0.1);
+            if (valorASacar > 0 && valorASacar <= this.Saldo)
+            {
+                this.Saldo -= valorASacar + 0.1;
+            }
+            else
+            {
+                throw new System.Exception("Você não possui saldo para este saque");
+            }
         }
     }
 }
