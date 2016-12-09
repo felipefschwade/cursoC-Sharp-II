@@ -41,11 +41,19 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            double valor = Convert.ToDouble(textoValorParaDeposito.Text);
 
             Conta conta = buscaConta();
 
-            conta.deposita(valor);
+            try
+            {
+                var valor = Convert.ToDouble(textoValorParaDeposito.Text);
+                conta.deposita(valor);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
 
             MessageBox.Show("Saldo Anterior: " + (conta.Saldo - valor) + "\n"
                             + "Saldo Atual: " + conta.Saldo);
@@ -59,12 +67,21 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Conta conta = buscaConta();
+            var conta = buscaConta();
 
             double valor = Convert.ToDouble(textoValorSaque.Text);
-            conta.saca(valor);
-            MessageBox.Show("Saldo Anterior: " + (conta.Saldo + valor) + "\n"
+
+            try
+            {
+                conta.saca(valor);
+                MessageBox.Show("Saldo Anterior: " + (conta.Saldo + valor) + "\n"
                             + "Saldo Atual: " + conta.Saldo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
             textoSaldo.Text = Convert.ToString(conta.Saldo);
             textoValorSaque.Text = "";
         }
@@ -94,7 +111,7 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Conta conta = buscaConta();
+            var conta = buscaConta();
             MessageBox.Show("Conta Número: " + conta.Numero + "\n"
                                 + "Saldo: " + conta.Numero);
         }
@@ -103,7 +120,7 @@ namespace WindowsFormsApplication1
         {
             comboDestinatario.Items.Clear();
 
-            Conta conta = buscaConta();
+            var conta = buscaConta();
 
             textoNumero.Text = Convert.ToString(conta.Numero);
             textoSaldo.Text = Convert.ToString(conta.Saldo);
@@ -122,15 +139,15 @@ namespace WindowsFormsApplication1
 
         private Conta buscaConta()
         {
-            int index = comboTitulares.SelectedIndex;
+            var index = comboTitulares.SelectedIndex;
             return this.banco.Contas[index];
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Conta conta = buscaConta();
-            int index = comboDestinatario.SelectedIndex;
-            Conta destino = banco.Contas[index];
+            var conta = buscaConta();
+            var index = comboDestinatario.SelectedIndex;
+            var destino = banco.Contas[index];
             if (destino != null && textoValorTransferencia.Text != "")
             {
                 double valor = Convert.ToDouble(textoValorTransferencia.Text);

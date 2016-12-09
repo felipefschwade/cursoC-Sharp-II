@@ -16,7 +16,7 @@ namespace TrabalhandoComClasses
             }
             else
             {
-                throw new System.Exception("Você não possui saldo para este saque");
+                throw new System.InvalidOperationException("Você não possui saldo para este saque");
             }
         }
     }
