@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace TrabalhandoComClasses
 {
-    class ContaPouopanca : Conta
+    class ContaPouopanca : Conta, ITributavel
     {
+        public double calculaTributos()
+        {
+            return Saldo * 0.02;
+        }
+
         public override void saca(double valorASacar)
         {
             if (valorASacar > 0 && valorASacar <= this.Saldo)

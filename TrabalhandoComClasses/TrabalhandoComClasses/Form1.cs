@@ -8,7 +8,9 @@ namespace WindowsFormsApplication1
     {
         Banco banco = new Banco();
         Conta conta = new ContaCorrente();
-        Conta cp = new ContaPouopanca();
+        ContaPouopanca cp = new ContaPouopanca();
+        GerenciadorDeImposto gi = new GerenciadorDeImposto();
+        SeguroDeVida sv = new SeguroDeVida();
         
         public Form1()
         {
@@ -43,20 +45,19 @@ namespace WindowsFormsApplication1
         {
 
             Conta conta = buscaConta();
-
+            
             try
             {
                 var valor = Convert.ToDouble(textoValorParaDeposito.Text);
                 conta.deposita(valor);
+                MessageBox.Show("Saldo Anterior: " + (conta.Saldo - valor) + "\n"
+                            + "Saldo Atual: " + conta.Saldo);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
-
-            MessageBox.Show("Saldo Anterior: " + (conta.Saldo - valor) + "\n"
-                            + "Saldo Atual: " + conta.Saldo);
+            
             textoSaldo.Text = Convert.ToString(conta.Saldo);
             textoValorParaDeposito.Text = "";
         }
@@ -171,6 +172,13 @@ namespace WindowsFormsApplication1
             string saldoAtual = Convert.ToString(conta.Saldo);
             textoSaldo.Text = saldoAtual;
             textoSaldo.Update();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            gi.Adiciona(sv);
+            gi.Adiciona(cp);
+            MessageBox.Show(Convert.ToString(gi.Total));
         }
     }
 }
